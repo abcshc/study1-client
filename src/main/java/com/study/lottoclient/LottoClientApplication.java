@@ -13,5 +13,4 @@ public class LottoClientApplication {
         PurchaseController purchaseController = new PurchaseController(new PurchaseServiceImpl());
         SpringApplication.run(LottoClientApplication.class, args);
     }
-
 }

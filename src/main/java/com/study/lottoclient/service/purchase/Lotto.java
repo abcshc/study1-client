@@ -1,41 +1,57 @@
 package com.study.lottoclient.service.purchase;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Lotto {
     private List<Integer> numbers;
+    private static final Random random = new Random();
 
-    public Lotto(List<Integer> numbers) {
-        List<Integer> remains = IntStream.range(1, 46).boxed().collect(Collectors.toList());
-
-        if (this.isInvalidNumber(numbers)) {
-            throw new RuntimeException();
-        }
-        // TODO: 번호 자동생성 6개
-        if (numbers.size() < 6) {
-            for (Integer number : numbers) {
-                remains.removeIf(it -> it.equals(number));
-            }
-
-            // 지우는거 완료
-
-            for (int i = 0; i < 6 - numbers.size(); i++) {
-                Random random = new Random();
-                int value = random.nextInt(45) % remains.size();
-                int next = remains.get(value);
-                remains.remove(value);
-                numbers.add(next);
-            }
-
-        } else if (numbers.size() > 6) {
-            throw new RuntimeException();
-        }
+    public static Lotto create() {
+        return create(List.of());
     }
 
-    private boolean isInvalidNumber(List<Integer> input) {
+    public static Lotto create(List<Integer> input) {
+        if (isInvalidNumber(input)) {
+            throw new IllegalArgumentException();
+        }
+        Lotto lotto = new Lotto();
+        // input 에서 모두 작업한 후 ImmutableCollections 로 나가기
+        List<Integer> numbers = new ArrayList<>(input);
+        // 숫자 뽑는 pool
+        if (input.size() < 6) {
+            // 로또에서 나올 수 있는 숫자 모두
+            Set<Integer> remains = IntStream.range(1, 46).boxed().collect(Collectors.toSet());
+            // 이미 선택된 숫자 빼기
+            remains.removeAll(numbers);
+            
+            for (int i = 0; i < 6 - input.size(); i++) {
+                int selected = selectRandomNumber(remains);
+                remains.remove(selected);
+                numbers.add(selected);
+            }
+
+        } else if (input.size() > 6) {
+            throw new IllegalArgumentException();
+        }
+        lotto.numbers = List.copyOf(numbers);
+        return lotto;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public static int selectRandomNumber(Set<Integer> remains) {
+        // 남아있는 숫자 중 랜덤 하나
+        return (int) remains.toArray()[random.nextInt(remains.size())];
+    }
+
+    private static boolean isInvalidNumber(List<Integer> input) {
         for (Integer number : input) {
             if (number < 1 || number > 45) {
                 return true;

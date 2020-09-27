@@ -4,14 +4,24 @@ import lombok.Getter;
 
 import java.util.List;
 
-@Getter
 public class PurchaseRequest {
     private int amount;
-
     private List<LottoRequest> lottos;
+
+    public int getAmount() {
+        return amount;
+    }
+    
+    public List<LottoRequest> getLottos() {
+        return lottos;
+    }
 
     @Getter
     public class LottoRequest {
-        List<Integer> numbers;
+        private List<Integer> numbers;
+
+        public List<Integer> getNumbers() {
+            return numbers;
+        }
     }
 }
