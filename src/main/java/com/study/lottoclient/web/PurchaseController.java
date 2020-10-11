@@ -22,11 +22,11 @@ public class PurchaseController {
     @PostMapping
     @ResponseBody
     public PurchaseResponse purchase(@RequestBody PurchaseRequest request) {
-        purchaseService.purchase(request.getAmount(),
-                request.getLottos()
-                        .stream()
-                        .map(it -> Lotto.create(it.getNumbers()))
-                        .collect(Collectors.toList()));
+//        purchaseService.purchase(request.getAmount(),
+//                request.getLottos()
+//                        .stream()
+//                        .map(it -> Lotto.create(it.getNumbers()))
+//                        .collect(Collectors.toList()));
         return null;
     }
 }

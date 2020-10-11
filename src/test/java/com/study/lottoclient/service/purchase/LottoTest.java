@@ -12,7 +12,6 @@ import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LottoTest {
-    // TODO: 로또를 생성합니다. List<Integer> 숫자만큼 정해지고 나머지는 자동 6자리
     // 6개 이상 입력 시, 숫자의 범위가 넘어설 경우 예외 발생
     @Test
     void test_createLotto_returnNumbers_whenNoInput() {

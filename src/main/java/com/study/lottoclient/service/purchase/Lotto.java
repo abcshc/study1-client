@@ -28,7 +28,7 @@ public class Lotto {
             Set<Integer> remains = IntStream.range(1, 46).boxed().collect(Collectors.toSet());
             // 이미 선택된 숫자 빼기
             remains.removeAll(numbers);
-            
+
             for (int i = 0; i < 6 - input.size(); i++) {
                 int selected = selectRandomNumber(remains);
                 remains.remove(selected);
