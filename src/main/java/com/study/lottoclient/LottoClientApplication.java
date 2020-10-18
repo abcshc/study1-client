@@ -1,7 +1,5 @@
 package com.study.lottoclient;
 
-import com.study.lottoclient.service.purchase.PurchaseServiceImpl;
-import com.study.lottoclient.web.PurchaseController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
