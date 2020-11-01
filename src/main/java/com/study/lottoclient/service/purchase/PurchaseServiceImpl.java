@@ -3,6 +3,7 @@ package com.study.lottoclient.service.purchase;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
@@ -19,8 +20,8 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
 
     @Override
-    public LottoPurchase findById(Long id) {
-        return lottoPurchaseRepository.findById(id).orElseThrow(RuntimeException::new);
+    public Optional<LottoPurchase> findById(Long id) {
+        return lottoPurchaseRepository.findById(id);
     }
 }
 

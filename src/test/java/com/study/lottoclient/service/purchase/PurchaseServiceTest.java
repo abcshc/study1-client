@@ -37,7 +37,7 @@ class PurchaseServiceTest {
     void test_findById() {
         when(repository.findById(0L)).thenReturn(Optional.of(new LottoPurchase(0L, List.of(Lotto.create()))));
 
-        assertEquals(1, purchaseService.findById(0L).getLottos().size());
+        assertEquals(1, purchaseService.findById(0L).get().getLottos().size());
     }
 
     @Test
