@@ -1,13 +1,14 @@
 package com.study.lottoclient.service.purchase;
 
+import com.study.lottoclient.service.result.GameResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -41,9 +42,10 @@ class PurchaseServiceTest {
     }
 
     @Test
-    void test_findById_throwRuntimeException_whenNotFound() {
-        when(repository.findById(0L)).thenReturn(Optional.empty());
+    void test_setGameResult_success() {
+        when(repository.setGameResult(new GameResult(List.of(1, 2, 3, 4, 5, 6), 7, LocalDate.of(2020, 11, 8))))
+                .thenReturn(1L);
 
-        assertThrows(RuntimeException.class, () -> purchaseService.findById(0L));
+        assertEquals(1L, purchaseService.setGameResult(new GameResult(List.of(1, 2, 3, 4, 5, 6), 7, LocalDate.of(2020, 11, 8))));
     }
 }

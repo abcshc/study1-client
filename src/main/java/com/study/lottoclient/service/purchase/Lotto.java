@@ -1,9 +1,6 @@
 package com.study.lottoclient.service.purchase;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -58,5 +55,18 @@ public class Lotto {
             }
         }
         return false;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lotto lotto = (Lotto) o;
+        return Objects.equals(getNumbers(), lotto.getNumbers());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getNumbers());
     }
 }
