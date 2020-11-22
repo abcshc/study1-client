@@ -1,6 +1,5 @@
 package com.study.lottoclient.service.purchase;
 
-import com.study.lottoclient.service.result.GameResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,11 +22,6 @@ public class PurchaseServiceImpl implements PurchaseService {
     @Override
     public Optional<LottoPurchase> findById(Long id) {
         return lottoPurchaseRepository.findById(id);
-    }
-
-    @Override
-    public Long setGameResult(GameResult gameResult) {
-        return lottoPurchaseRepository.setGameResult(gameResult);
     }
 }
 

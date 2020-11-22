@@ -1,6 +1,5 @@
 package com.study.lottoclient.service.purchase;
 
-import com.study.lottoclient.service.result.GameResult;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -24,10 +23,5 @@ public class LottoPurchaseRepositoryImpl implements LottoPurchaseRepository {
     @Override
     public Optional<LottoPurchase> findById(Long id) {
         return Optional.ofNullable(lottoPurchases.get(id));
-    }
-
-    @Override
-    public Long setGameResult(GameResult gameResult) {
-        return null;
     }
 }

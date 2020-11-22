@@ -9,6 +9,4 @@ public interface PurchaseService {
     LottoPurchase purchase(List<Lotto> lottos);
 
     Optional<LottoPurchase> findById(Long id);
-
-    Long setGameResult(GameResult gameResult);
 }

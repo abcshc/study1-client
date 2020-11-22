@@ -6,13 +6,25 @@ import java.util.Objects;
 
 public class GameResult {
     private List<Integer> winningNumbers;
-    private Integer bonusNumber;
-    private LocalDate createDate;
-    
-    public GameResult(List<Integer> winningNumbers, Integer bonusNumber, LocalDate createDate) {
+    private Integer bonus;
+    private LocalDate resultDate;
+
+    public GameResult(List<Integer> winningNumbers, Integer bonus, LocalDate resultDate) {
         this.winningNumbers = winningNumbers;
-        this.bonusNumber = bonusNumber;
-        this.createDate = createDate;
+        this.bonus = bonus;
+        this.resultDate = resultDate;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public Integer getBonus() {
+        return bonus;
+    }
+
+    public LocalDate getResultDate() {
+        return resultDate;
     }
 
     @Override
@@ -21,12 +33,12 @@ public class GameResult {
         if (o == null || getClass() != o.getClass()) return false;
         GameResult that = (GameResult) o;
         return Objects.equals(winningNumbers, that.winningNumbers) &&
-                Objects.equals(bonusNumber, that.bonusNumber) &&
-                Objects.equals(createDate, that.createDate);
+                Objects.equals(bonus, that.bonus) &&
+                Objects.equals(resultDate, that.resultDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(winningNumbers, bonusNumber, createDate);
+        return Objects.hash(winningNumbers, bonus, resultDate);
     }
 }

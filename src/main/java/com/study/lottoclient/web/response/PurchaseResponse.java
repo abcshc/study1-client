@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class PurchaseResponse {
     private Long id;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
     private List<LottoResponse> lottos;
 
@@ -25,7 +25,7 @@ public class PurchaseResponse {
         return id;
     }
 
-    public LocalDateTime getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
@@ -33,12 +33,12 @@ public class PurchaseResponse {
         return lottos;
     }
 
-    public PurchaseResponse(){
+    public PurchaseResponse() {
     }
 
     public PurchaseResponse(LottoPurchase lottoPurchase) {
         this.id = lottoPurchase.getId();
-        this.createTime = lottoPurchase.getCreateTime();
+        this.createTime = lottoPurchase.getCreateTime().toString();
         this.lottos = lottoPurchase.getLottos().stream().map(it -> {
             LottoResponse lottoResponse = new LottoResponse();
             lottoResponse.numbers = it.getNumbers();
